@@ -24,10 +24,11 @@ public class ReadingExcelFileJavaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		final String EXCEL_PATH = "C:\\Users\\MikeHenry\\OneDrive\\Documents\\Docs\\Sample-employee.xlsx";
+		String path = "static/SampleDataEmployee.xlsx";
+
 		EmployeeUtils employeeUtils = new EmployeeUtils();
 
-		List<Employee> employeeList = employeeUtils.extractDataFromExcel(EXCEL_PATH);
+		List<Employee> employeeList = employeeUtils.extractDataFromExcel(path);
 
 		log.info("Employee Data Loaded from File");
 		employeeList.forEach(employee -> log.info(employee.getFirstName() + "\t" + employee.getLastName()

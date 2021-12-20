@@ -7,7 +7,10 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,9 +30,9 @@ public class EmployeeUtils {
         // Create a DataFormatter to format and get each cell's value as String
         DataFormatter dataFormatter = new DataFormatter();
 
+        ClassPathResource resource = new ClassPathResource(path);
 
-
-        try(FileInputStream fileInputStream = new FileInputStream(path);
+        try(FileInputStream fileInputStream = new FileInputStream(resource.getFile());
             XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream)) {
 
             log.info("Extracting data");
